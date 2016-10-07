@@ -4,8 +4,8 @@ from itertools import islice
 
 
 def get_trending_repositories(top_size):
-    week_ago = (datetime.now() - timedelta(top_size)).strftime("%Y-%m-%d")
-    request_params = {"q": "created:>{}".format(week_ago),
+    date_string = (datetime.now() - timedelta(top_size)).strftime("%Y-%m-%d")
+    request_params = {"q": "created:>{}".format(date_string),
               "sort": "stars",
               "order": "desc"}
     trending_url = "https://api.github.com/search/repositories"
