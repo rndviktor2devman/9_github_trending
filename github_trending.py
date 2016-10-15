@@ -26,14 +26,5 @@ def print_repositories(repositories_list, output_length=20):
         index += 1
 
 
-def login_to_github():
-    request_params = {"client_id": "8cb0e9b7166af6cef14c",
-                      "scope": "user"}
-    login_url = "https://github.com/login/oauth/authorize"
-    requests.get(login_url, params=request_params)
-    print('Successfully logged in.')
-
-
 if __name__ == '__main__':
-    login_to_github()
     print_repositories(get_trending_repositories(7))
