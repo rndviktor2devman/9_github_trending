@@ -13,17 +13,15 @@ def get_trending_repositories(top_size):
     return data["items"]
 
 
-def print_repositories(repositories_list, output_length=20):
-    index = 1
-    for repository in islice(repositories_list, output_length):
-        print("{}. Repository:".format(index))
+def print_repositories(data, output_length=20):
+    for index, repository in enumerate(islice(data, output_length)):
+        print("{}. Repository:".format(index + 1))
         print("Name: ", repository["name"],
               " Forks: ", repository["forks_count"],
               " Stars: ", repository["stargazers_count"],
               " Issues: ", repository["open_issues_count"])
         print("Description: ", repository["description"])
         print("URL: ", repository["html_url"])
-        index += 1
 
 
 if __name__ == '__main__':
