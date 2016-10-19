@@ -1,6 +1,5 @@
 import requests
 from datetime import datetime, timedelta
-from itertools import islice
 
 
 def get_trending_repositories(top_size):
@@ -14,7 +13,7 @@ def get_trending_repositories(top_size):
 
 
 def print_repositories(data, output_length=20):
-    for index, repository in enumerate(islice(data, output_length)):
+    for index, repository in enumerate(data[:output_length]):
         print("{}. Repository:".format(index + 1))
         print("Name: ", repository["name"],
               " Forks: ", repository["forks_count"],
@@ -25,4 +24,5 @@ def print_repositories(data, output_length=20):
 
 
 if __name__ == '__main__':
-    print_repositories(get_trending_repositories(7))
+    days_range = 7
+    print_repositories(get_trending_repositories(days_range))
